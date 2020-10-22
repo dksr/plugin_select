@@ -24,10 +24,10 @@ export class Select {
     return `
     <div class="select__input">
     <span data-type="selected">${title}</span>
-      <i class="fa fa-chevron-down" aria-hidden="true"></i>
+      <i class="fa fa-chevron-down" aria-hidden="true" data-type="arrow"></i>
     </div>
     <div class="select__dropdown" data-type="dropdown">
-      <div class="backdrop"></div>
+      <div class="select__backdrop"></div>
       <ul>
         ${items}
       </ul>
@@ -39,6 +39,7 @@ export class Select {
     this.$el.classList.add("select")
     this.$el.innerHTML = this.getTemplate()
     this.$dropdown = document.querySelector('[data-type="dropdown"]')
+    this.$arrow = document.querySelector('[data-type="arrow"]')
   }
 
   #afterRender() {    
@@ -55,10 +56,15 @@ export class Select {
 
   open() {    
     this.$dropdown.classList.add("open")
+    this.$arrow.classList.remove("fa-chevron-down")
+    this.$arrow.classList.add("fa-chevron-up")
   }
 
   close() {
     this.$dropdown.classList.remove("open")
+    this.$arrow.classList.remove("fa-chevron-up")
+    this.$arrow.classList.add("fa-chevron-down")
+    
   }
   
   toggle() {

@@ -28,25 +28,26 @@
       color: gray;
     }
   }
+  &__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    z-index: 10;
+  }
+
   &__dropdown {
     position: relative;
     border: 1px solid #bdbdbd;
     border-radius: 4px;
     display: none;
-    .backdrop {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: none;
-      z-index: 10;
-    }
 
     &.open {
       display: block;
       border-top: none;
-      .backdrop {
+      .select__backdrop {
         display: block;
       }
     }
